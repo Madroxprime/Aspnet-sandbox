@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.EntityFrameworkCore;
+using ServiceRequestTracker.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,14 @@ builder.Services.AddAuthorization(options =>
     options.FallbackPolicy = options.DefaultPolicy;
 });
 builder.Services.AddRazorPages();
+
+/** This is not ideal in production code. 
+ *  you'd use dependency injection and configure the data sources in the appsettings.json files for
+ *  dev or prod development.  and Program.JS would have explicit lines to use the correct database connector type
+ *  (OptionsBuilder.UseSqlServer for MSSQL )
+*/
+builder.Services.AddDbContext<AppDBContext>(options =>
+    options.UseSqlite("Data Source=development.db"));
 
 var app = builder.Build();
 

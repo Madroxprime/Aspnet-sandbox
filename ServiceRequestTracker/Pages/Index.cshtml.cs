@@ -1,20 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ServiceRequestTracker.Data;
+using ServiceRequestTracker.Models;
 
 namespace ServiceRequestTracker.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly AppDBContext _appDBContext;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public Location Location { get; set; }
+
+        public IndexModel(ILogger<IndexModel> logger, AppDBContext appDBContext)
         {
             _logger = logger;
+            _appDBContext = appDBContext;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            Page();
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.Identity.Name == "FARGO\\durows")
+                {
+                    return RedirectToPage("/DurowsDashboard");
+                }
+                return Page();
+            }
+            return RedirectToPage("/NotAuthorized");
         }
     }
 }

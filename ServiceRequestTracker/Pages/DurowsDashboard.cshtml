@@ -1,0 +1,33 @@
+﻿@page
+@model ServiceRequestTracker.Pages.DurowsDashboardModel
+
+<H2> HELLO Here is random data!</H2>
+<div id="users">
+@{
+    foreach(var user in Model.Users){
+        <ul>@user.FirstName @user.LastName</ul>
+    }
+}
+</div>
+<div id="locations">
+    <table>
+        <tr>
+            <th>Location Id</th>
+            <th>Location Name</th>
+            <th>Location Description</th>
+        </tr>
+        @foreach(var school in Model.Locations){
+            <tr>
+                <td>@school.LocationId</td>
+                <td>@school.LocationName</td>
+                <td>@school.LocationDescription</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    @foreach(var request in Model.EagerRequests){
+       <p> @request.Requester.LastName , @request.Requester.FirstName had a complaint about @request.Description at @request.LocationId</p>
+    }
+</div>
