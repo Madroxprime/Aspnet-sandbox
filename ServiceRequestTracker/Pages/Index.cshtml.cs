@@ -22,7 +22,7 @@ namespace ServiceRequestTracker.Pages
         {
             if (User.Identity.IsAuthenticated)
             {
-                if (User.Identity.Name == "FARGO\\durows")
+                if (User.Identity.Name == "FARGO\\durows" || User.Identity.Name == "FARGO\\madrox")
                 {
                     return RedirectToPage("/DurowsDashboard");
                 }

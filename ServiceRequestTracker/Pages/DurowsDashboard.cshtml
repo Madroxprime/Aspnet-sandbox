@@ -5,10 +5,13 @@
 <div id="users">
 @{
     foreach(var user in Model.Users){
-        <ul>@user.FirstName @user.LastName</ul>
+        <ul>* @user.FirstName @user.LastName</ul>
+        <ul id="@user.UserId-Locations">Can be found at @user.Locations.Aggregate("",(init, next) => init += $"{next.LocationId} ")</ul>
     }
 }
 </div>
+<br />
+<br />
 <div id="locations">
     <table>
         <tr>
@@ -27,7 +30,8 @@
 </div>
 
 <div>
+    <h2>Request Database</h2>
     @foreach(var request in Model.EagerRequests){
-       <p> @request.Requester.LastName , @request.Requester.FirstName had a complaint about @request.Description at @request.LocationId</p>
+       <p> @request.Requester.LastName , @request.Requester.FirstName requested support with @request.Description at @request.LocationId</p>
     }
 </div>

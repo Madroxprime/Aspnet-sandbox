@@ -14,6 +14,7 @@ builder.Services.AddAuthorization(options =>
     // By default, all incoming requests will be authorized according to the default policy.
     options.FallbackPolicy = options.DefaultPolicy;
 });
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 
 /** This is not ideal in production code. 
@@ -42,5 +43,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

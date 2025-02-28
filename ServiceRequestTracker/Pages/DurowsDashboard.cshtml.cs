@@ -43,8 +43,10 @@ namespace ServiceRequestTracker.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             // This is how you'd make database calls asyncronously, but sqlite doesn't support async operations
-            //Users = await _dbContext.Users.ToListAsync();
-            Users = _dbContext.Users.ToList();
+            //   Users = await _dbContext.Users.ToListAsync();
+            Users = _dbContext.Users
+                .Include(u => u.Locations)
+                .ToList();
 
             // This will simply query the resource from the context, and return a List<T> of all the resources of <T>
             // A List is very similiar to an Array but it's got some overhead for using Linq commands.

@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using ServiceRequestTracker.Data;
 
-namespace ServiceRequestTracker.Controller
+namespace ServiceRequestTracker.Controllers
 {
-    public class SandboxController : ControllerBase
+    [ApiController]
+    [Route("api/[controller]")]
+    public class SandboxController : Controller
     {
         private readonly AppDBContext _dbContext;
         private readonly ILogger<SandboxController> _logger;
