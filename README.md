@@ -1,3 +1,3 @@
-# ServiceRequestTracker
+# Aspnet Sandbox
 
-This is a tool for defining relationships of work, while tracking service states, providers, locations and fulfillment.
+This is a curated example for tinkering with an ASP.net app using EF framework. 
