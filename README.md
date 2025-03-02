@@ -18,7 +18,7 @@ Starter tasks:
 	2) On DurowsDashboard, how do you change the LocationsIds in the Requests to the LocationNames?  
 	3) There is an endpoint for a RESTful API that will add a user to a location:  
            ```
-	  /api/v1/sandbox?userid={userid}&locationId={locationId}  
+	  /api/sandbox?userid={userid}&locationId={locationId}  
             ```
      using javascript, can you make an AJAX call to this endpoint and then recieve the response to change the data in place?
       A 200 response : 
